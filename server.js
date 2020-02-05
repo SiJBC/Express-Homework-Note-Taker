@@ -1,10 +1,10 @@
 // add required modules
 const express = require("express");
-// const path = require("path");
+const path = require("path");
 
 // Create server application at port 3000
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3003;
 
 // Read URL or JSON
 app.use(express.urlencoded({extended: true}));
@@ -17,7 +17,7 @@ require("./routes/htmlRoutes")(app);
 // Use public folder
 app.use(express.static("public"));
 
-// Add listener
-app.listen(PORT, function() {
-    console.log("App listening on PORT: " + PORT);
-});
+//fires up the "server"
+app.listen(PORT, function () {
+    console.log("Server listening on: http://localhost:" + PORT);
+  });
