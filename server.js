@@ -6,12 +6,13 @@ const fs = require("fs");
 
 // setup global variables
 const app = express();
-const port = 8080;
+// check if the app is being run through heroku or local
+const port = process.env.PORT || 8080;
 const mainDir = path.join(__dirname, "/public");
 
 // access the public folder with the js and html files
 app.use(express.static('public'));
-// recognises the incomming objects as strings or arrats
+// recognises the incomming objects as strings of arrays
 app.use(express.urlencoded({extended: true}));
 // recognises the incoming object as a json object
 app.use(express.json());
@@ -76,5 +77,5 @@ app.delete("/api/notes/:id", function(req, res) {
 })
 
 app.listen(port, function() {
-    console.log("Server listening on: http://localhost:" + PORT);
+    console.log("Server listening on: http://localhost:" + port);
 })
